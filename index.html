@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══ PRIMARY SEO ═══ -->
+<title>Yatra – Indian Domestic Travel Planner | AI Trip Itinerary, Budget & Packing</title>
+<meta name="description" content="Plan your perfect Indian trip with Yatra – the AI-powered travel planner for domestic travel. Get personalised itineraries, budget tracking, packing checklists, women-friendly trip flags, seasonal recommendations and more. Free to use!">
+<meta name="keywords" content="Indian travel planner, domestic travel India, AI itinerary India, free trip planner India, travel itinerary generator India, budget travel India, women solo travel India safe, Rajasthan trip planner, Kerala backwater travel, Goa trip planner, Himachal Pradesh travel, Ladakh trip planner, Varanasi travel guide, travel budget tracker rupees, packing checklist India, best time to visit India by season, senior citizen travel India, family trip India, solo travel India, yatra planner, safar plan India">
+<meta name="author" content="Yatra – Indian Travel Planner">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="theme-color" content="#8B1A1A">
+<link rel="canonical" href="https://spontaneous-pie-663066.netlify.app/">
+
+<!-- ═══ OPEN GRAPH (Facebook, WhatsApp previews) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spontaneous-pie-663066.netlify.app/">
+<meta property="og:title" content="Yatra – AI-Powered Indian Travel Planner 🇮🇳">
+<meta property="og:description" content="Plan your dream Indian trip with AI! Get personalised itineraries, budget tracking, packing checklists, women-friendly flags & seasonal travel tips. Free to use!">
+<meta property="og:image" content="https://spontaneous-pie-663066.netlify.app/preview.png">
+<meta property="og:site_name" content="Yatra – Indian Travel Planner">
+<meta property="og:locale" content="en_IN">
+
+<!-- ═══ TWITTER CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://spontaneous-pie-663066.netlify.app/">
+<meta name="twitter:title" content="Yatra – AI-Powered Indian Travel Planner 🇮🇳">
+<meta name="twitter:description" content="Plan your dream Indian trip with AI! Personalised itineraries, budget tracking, women-friendly flags & seasonal tips. Free!">
+<meta name="twitter:image" content="https://spontaneous-pie-663066.netlify.app/preview.png">
+
+<!-- ═══ STRUCTURED DATA / SCHEMA.ORG ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Yatra – Indian Travel Planner",
+  "url": "https://spontaneous-pie-663066.netlify.app/",
+  "description": "AI-powered Indian domestic travel planner with itinerary generation, budget tracking, packing checklists, women-friendly trip planning, and seasonal travel recommendations.",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "featureList": [
+    "AI Trip Itinerary Generator",
+    "Budget Tracker in INR",
+    "Packing Checklist",
+    "Women-Friendly Trip Planning",
+    "Solo Travel Planning",
+    "Seasonal Travel Recommendations",
+    "Indian Destinations Guide",
+    "Hotel and Flight Search Links"
+  ],
+  "inLanguage": "en-IN",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Indian domestic travellers"
+  }
+}
+</script>
+<!-- ✅ Config file — paste your API key in config.js -->
+<script src="config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Baloo+2:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --deep-saffron: #E85D00;
+    --gold: #F0A500;
+    --teal: #00897B;
+    --teal-light: #4DB6AC;
+    --maroon: #8B1A1A;
+    --cream: #FFF8F0;
+    --dark: #1A0A00;
+    --text: #3D1F00;
+    --card-bg: #FFFAF4;
+    --border: #F0D5B0;
+    --pink: #E91E8C;
+    --green: #388E3C;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--text); min-height:100vh; }
+
+  /* ── NAV ── */
+  nav {
+    background: linear-gradient(135deg, var(--maroon) 0%, #5C1010 50%, #2D0A00 100%);
+    padding: 0 2rem; display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:1000; box-shadow:0 4px 20px rgba(0,0,0,0.4);
+    min-height:64px;
+  }
+  .logo { display:flex; align-items:center; gap:10px; }
+  .logo-icon { font-size:2rem; }
+  .logo-text { font-family:'Playfair Display',serif; font-size:1.7rem; color:#FFD700; letter-spacing:2px; }
+  .logo-sub { font-size:0.65rem; color:var(--gold); letter-spacing:4px; text-transform:uppercase; display:block; margin-top:-4px; }
+  .nav-tabs { display:flex; gap:4px; }
+  .nav-tab {
+    background:none; border:none; color:rgba(255,255,255,0.75); cursor:pointer;
+    padding:8px 14px; border-radius:8px; font-family:'Baloo 2',sans-serif; font-size:0.85rem;
+    transition:all 0.2s; display:flex; align-items:center; gap:6px;
+  }
+  .nav-tab:hover, .nav-tab.active { background:rgba(255,165,0,0.2); color:#FFD700; }
+  .nav-tab.active { border-bottom:2px solid var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #8B1A1A 0%, #E85D00 40%, #F0A500 80%, #FFD700 100%);
+    padding: 60px 2rem 80px; text-align:center; position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M40 40m-30 0a30 30 0 1 0 60 0a30 30 0 1 0-60 0M40 20l5 10h10l-8 7 3 11-10-7-10 7 3-11-8-7h10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:3.2rem; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,0.3); position:relative; }
+  .hero h1 span { color:#FFD700; font-style:italic; }
+  .hero p { color:rgba(255,255,255,0.9); font-size:1.15rem; margin:12px 0 32px; position:relative; }
+  .hero-badges { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; }
+  .badge {
+    background:rgba(255,255,255,0.15); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.3); border-radius:30px;
+    padding:8px 18px; color:#fff; font-size:0.85rem; display:flex; align-items:center; gap:6px;
+  }
+  .badge.women { background:rgba(233,30,140,0.25); border-color:rgba(233,30,140,0.5); }
+  .badge.single { background:rgba(0,137,123,0.25); border-color:rgba(0,137,123,0.5); }
+
+  /* ── MAIN ── */
+  .main { max-width:1100px; margin:0 auto; padding:30px 1.5rem 60px; }
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* ── CARDS & SECTIONS ── */
+  .section-title {
+    font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--maroon);
+    margin-bottom:6px; display:flex; align-items:center; gap:10px;
+  }
+  .section-title::after { content:''; flex:1; height:2px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .section-sub { color:#888; margin-bottom:24px; font-size:0.95rem; }
+
+  .card {
+    background:var(--card-bg); border:1px solid var(--border); border-radius:16px;
+    padding:22px; box-shadow:0 4px 20px rgba(139,26,26,0.06);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(139,26,26,0.1); }
+
+  /* ── FORM ELEMENTS ── */
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .form-row.three { grid-template-columns:1fr 1fr 1fr; }
+  .form-row.full { grid-template-columns:1fr; }
+  .form-group { display:flex; flex-direction:column; gap:6px; }
+  label { font-size:0.85rem; font-weight:600; color:var(--maroon); letter-spacing:0.5px; }
+  input, select, textarea {
+    border:1.5px solid var(--border); border-radius:10px; padding:10px 14px;
+    font-family:'Nunito',sans-serif; font-size:0.95rem; background:#fff; color:var(--dark);
+    transition:border-color 0.2s, box-shadow 0.2s; outline:none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color:var(--saffron); box-shadow:0 0 0 3px rgba(255,107,0,0.12);
+  }
+  textarea { resize:vertical; min-height:80px; }
+
+  .btn {
+    background:linear-gradient(135deg,var(--saffron),var(--deep-saffron));
+    color:#fff; border:none; border-radius:12px; padding:12px 28px;
+    font-family:'Baloo 2',sans-serif; font-size:1rem; font-weight:600;
+    cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px;
+    box-shadow:0 4px 15px rgba(255,107,0,0.3);
+  }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,107,0,0.4); }
+  .btn:active { transform:translateY(0); }
+  .btn.teal { background:linear-gradient(135deg,var(--teal),#006B5E); box-shadow:0 4px 15px rgba(0,137,123,0.3); }
+  .btn.gold { background:linear-gradient(135deg,var(--gold),#D4900A); box-shadow:0 4px 15px rgba(240,165,0,0.3); color:var(--dark); }
+  .btn.pink { background:linear-gradient(135deg,var(--pink),#B0006A); box-shadow:0 4px 15px rgba(233,30,140,0.3); }
+  .btn.sm { padding:8px 16px; font-size:0.85rem; }
+  .btn.danger { background:linear-gradient(135deg,#e53935,#b71c1c); box-shadow:0 4px 15px rgba(229,57,53,0.3); }
+
+  /* Toggle badges */
+  .toggle-group { display:flex; gap:10px; flex-wrap:wrap; }
+  .toggle-btn {
+    border:2px solid var(--border); border-radius:30px; padding:7px 16px;
+    background:#fff; cursor:pointer; font-size:0.85rem; font-family:'Nunito',sans-serif;
+    transition:all 0.2s; display:flex; align-items:center; gap:6px; color:var(--text);
+  }
+  .toggle-btn.active { border-color:var(--saffron); background:rgba(255,107,0,0.08); color:var(--saffron); font-weight:700; }
+  .toggle-btn.women-flag.active { border-color:var(--pink); background:rgba(233,30,140,0.08); color:var(--pink); }
+  .toggle-btn.single-flag.active { border-color:var(--teal); background:rgba(0,137,123,0.08); color:var(--teal); }
+
+  /* ── AI RESPONSE BOX ── */
+  .ai-box {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF0E0 100%);
+    border:2px solid var(--gold); border-radius:16px; padding:24px; margin-top:20px;
+    position:relative; display:none;
+  }
+  .ai-box.show { display:block; animation:fadeIn 0.4s ease; }
+  .ai-box-header {
+    display:flex; align-items:center; gap:10px; margin-bottom:16px;
+    font-family:'Baloo 2',sans-serif; font-size:1rem; font-weight:700; color:var(--maroon);
+  }
+  .ai-sparkle { font-size:1.4rem; animation:spin 3s linear infinite; }
+  @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  .ai-content { line-height:1.8; color:var(--text); white-space:pre-wrap; font-size:0.95rem; }
+  .ai-loading { display:flex; align-items:center; gap:10px; color:var(--saffron); }
+  .dot-pulse { display:flex; gap:4px; }
+  .dot-pulse span { width:8px; height:8px; border-radius:50%; background:var(--saffron); animation:pulse 1.2s infinite; }
+  .dot-pulse span:nth-child(2) { animation-delay:0.2s; }
+  .dot-pulse span:nth-child(3) { animation-delay:0.4s; }
+  @keyframes pulse { 0%,80%,100%{transform:scale(0.8);opacity:0.5} 40%{transform:scale(1.2);opacity:1} }
+
+  /* ── ITINERARY DAYS ── */
+  .day-card {
+    border-left:4px solid var(--saffron); border-radius:0 12px 12px 0;
+    background:#fff; padding:16px 20px; margin-bottom:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .day-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .day-badge {
+    background:linear-gradient(135deg,var(--saffron),var(--gold));
+    color:#fff; border-radius:8px; padding:4px 12px;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:0.85rem;
+  }
+  .activity-row { display:flex; gap:10px; margin-bottom:8px; align-items:flex-start; }
+  .activity-time {
+    background:var(--cream); border:1px solid var(--border); border-radius:6px;
+    padding:4px 10px; font-size:0.8rem; white-space:nowrap; color:var(--maroon); font-weight:600;
+  }
+  .activity-input {
+    flex:1; border:1.5px solid var(--border); border-radius:8px; padding:8px 12px;
+    font-size:0.9rem; font-family:'Nunito',sans-serif;
+  }
+  .del-btn { background:none; border:none; cursor:pointer; color:#ccc; font-size:1rem; padding:6px; transition:color 0.2s; }
+  .del-btn:hover { color:#e53935; }
+
+  /* ── BUDGET ── */
+  .budget-summary {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px;
+  }
+  .budget-stat {
+    background:#fff; border-radius:12px; padding:16px; text-align:center;
+    border:1.5px solid var(--border);
+  }
+  .budget-stat .amount { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; }
+  .budget-stat .label { font-size:0.78rem; color:#888; text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+  .budget-stat.total .amount { color:var(--maroon); }
+  .budget-stat.spent .amount { color:var(--saffron); }
+  .budget-stat.remaining .amount { color:var(--teal); }
+  .expense-row {
+    display:grid; grid-template-columns:1fr 2fr 1fr auto; gap:10px;
+    align-items:center; padding:10px; border-bottom:1px solid var(--border);
+  }
+  .expense-row:last-child { border-bottom:none; }
+  .category-badge {
+    padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.5px; text-align:center;
+  }
+  .cat-transport { background:#FFF3E0; color:#E65100; }
+  .cat-hotel { background:#E8F5E9; color:#1B5E20; }
+  .cat-food { background:#FFF8E1; color:#F57F17; }
+  .cat-activity { background:#E3F2FD; color:#0D47A1; }
+  .cat-shopping { background:#FCE4EC; color:#880E4F; }
+  .cat-other { background:#F3E5F5; color:#4A148C; }
+  .progress-bar-wrap { height:12px; background:#F0E0CC; border-radius:10px; overflow:hidden; margin:8px 0; }
+  .progress-bar { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--teal),var(--gold),var(--saffron)); transition:width 0.5s; }
+
+  /* ── CHECKLIST ── */
+  .checklist-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .checklist-section h3 {
+    font-family:'Baloo 2',sans-serif; font-size:1rem; color:var(--maroon);
+    margin-bottom:12px; display:flex; align-items:center; gap:8px;
+    border-bottom:2px dashed var(--border); padding-bottom:8px;
+  }
+  .check-item {
+    display:flex; align-items:center; gap:10px; padding:8px 10px;
+    border-radius:8px; margin-bottom:4px; cursor:pointer; transition:background 0.15s;
+  }
+  .check-item:hover { background:rgba(255,107,0,0.05); }
+  .check-item.checked { opacity:0.5; }
+  .check-item.checked span { text-decoration:line-through; }
+  .check-box {
+    width:20px; height:20px; border-radius:6px; border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:all 0.2s; font-size:0.75rem; color:transparent;
+  }
+  .check-item.checked .check-box { background:var(--teal); border-color:var(--teal); color:#fff; }
+  .checklist-progress { font-size:0.85rem; color:#888; margin-bottom:16px; }
+
+  /* ── DESTINATIONS ── */
+  .dest-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; }
+  .dest-card {
+    border-radius:16px; overflow:hidden; position:relative; cursor:pointer;
+    border:2px solid transparent; transition:all 0.2s; box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  }
+  .dest-card:hover { border-color:var(--gold); transform:translateY(-4px); }
+  .dest-img {
+    width:100%; height:140px; object-fit:cover;
+    background:linear-gradient(135deg,var(--saffron),var(--maroon));
+    display:flex; align-items:center; justify-content:center; font-size:3.5rem;
+  }
+  .dest-info { background:#fff; padding:14px; }
+  .dest-name { font-family:'Baloo 2',sans-serif; font-size:1rem; font-weight:700; color:var(--dark); }
+  .dest-state { font-size:0.78rem; color:#888; }
+  .dest-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:8px; }
+  .dest-tag { background:var(--cream); border:1px solid var(--border); border-radius:20px; padding:2px 8px; font-size:0.7rem; }
+  .tag-women { background:#FCE4EC; border-color:#F48FB1; color:#880E4F; }
+  .tag-single { background:#E0F2F1; border-color:#80CBC4; color:#004D40; }
+  .tag-season { background:#FFF8E1; border-color:#FFE082; color:#F57F17; }
+
+  .filter-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; align-items:center; }
+  .filter-chip {
+    padding:6px 16px; border-radius:20px; border:1.5px solid var(--border);
+    background:#fff; cursor:pointer; font-size:0.82rem; transition:all 0.2s;
+  }
+  .filter-chip.active { background:var(--saffron); border-color:var(--saffron); color:#fff; font-weight:700; }
+
+  /* ── LINKS ── */
+  .link-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
+  .link-card {
+    display:flex; align-items:center; gap:14px; padding:18px;
+    background:#fff; border:1.5px solid var(--border); border-radius:14px;
+    text-decoration:none; color:var(--text); transition:all 0.2s;
+  }
+  .link-card:hover { border-color:var(--saffron); background:rgba(255,107,0,0.03); transform:translateY(-2px); }
+  .link-icon { font-size:2rem; width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; }
+  .link-card h4 { font-family:'Baloo 2',sans-serif; font-size:0.95rem; margin-bottom:2px; }
+  .link-card p { font-size:0.78rem; color:#888; }
+
+  /* ── SEASONAL ── */
+  .season-tabs { display:flex; gap:8px; margin-bottom:20px; }
+  .season-tab {
+    padding:10px 20px; border-radius:10px; border:2px solid var(--border);
+    background:#fff; cursor:pointer; font-family:'Baloo 2',sans-serif;
+    font-size:0.9rem; transition:all 0.2s; display:flex; align-items:center; gap:6px;
+  }
+  .season-tab.active { border-color:var(--saffron); background:var(--saffron); color:#fff; }
+
+  /* ── TOAST ── */
+  .toast {
+    position:fixed; bottom:30px; right:30px; background:#333; color:#fff;
+    padding:12px 20px; border-radius:10px; font-size:0.9rem; z-index:9999;
+    opacity:0; transform:translateY(20px); transition:all 0.3s;
+    display:flex; align-items:center; gap:8px;
+  }
+  .toast.show { opacity:1; transform:translateY(0); }
+  .toast.success { background:var(--teal); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:700px) {
+    .form-row { grid-template-columns:1fr; }
+    .form-row.three { grid-template-columns:1fr 1fr; }
+    .budget-summary { grid-template-columns:1fr 1fr; }
+    .hero h1 { font-size:2rem; }
+    .checklist-grid { grid-template-columns:1fr; }
+    .nav-tabs { gap:2px; }
+    .nav-tab span { display:none; }
+  }
+
+  /* ── TRIP CARDS LIST ── */
+  .trip-list { display:grid; gap:14px; margin-bottom:24px; }
+  .trip-list-card {
+    background:#fff; border:1.5px solid var(--border); border-radius:14px;
+    padding:16px 20px; display:flex; justify-content:space-between; align-items:center;
+    cursor:pointer; transition:all 0.2s;
+  }
+  .trip-list-card:hover { border-color:var(--saffron); }
+  .trip-list-card h4 { font-family:'Baloo 2',sans-serif; font-size:1rem; color:var(--dark); }
+  .trip-list-card p { font-size:0.8rem; color:#888; margin-top:3px; }
+  .trip-flags { display:flex; gap:6px; margin-top:6px; }
+  .trip-flag { font-size:0.7rem; padding:2px 8px; border-radius:10px; }
+  .flag-women { background:#FCE4EC; color:#880E4F; }
+  .flag-single { background:#E0F2F1; color:#004D40; }
+
+  /* Divider */
+  hr.fancy { border:none; border-top:2px dashed var(--border); margin:24px 0; }
+</style>
+
+<!-- ═══ FIREBASE ═══ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, onAuthStateChanged }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc, collection, getDocs, deleteDoc }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // ── YOUR FIREBASE CONFIG (filled after setup) ──
+  const firebaseConfig = {
+    apiKey: "FIREBASE_API_KEY",
+    authDomain: "FIREBASE_AUTH_DOMAIN",
+    projectId: "FIREBASE_PROJECT_ID",
+    storageBucket: "FIREBASE_STORAGE_BUCKET",
+    messagingSenderId: "FIREBASE_MESSAGING_SENDER_ID",
+    appId: "FIREBASE_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+  const fbProvider = new FacebookAuthProvider();
+
+  let currentUser = null;
+
+  // ── AUTH STATE LISTENER — non-blocking, updates nav only ──
+  onAuthStateChanged(auth, user => {
+    currentUser = user;
+    const navAuth = document.getElementById('nav-auth-area');
+    if (!navAuth) return;
+    if (user) {
+      const avatar = user.photoURL || 'https://ui-avatars.com/api/?name='+encodeURIComponent(user.displayName||'User')+'&background=FF6B00&color=fff';
+      navAuth.innerHTML = `
+        <div style="display:flex;align-items:center;gap:8px;">
+          <img src="${avatar}" alt="avatar" style="width:30px;height:30px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;">
+          <span style="color:#FFD700;font-size:0.82rem;font-weight:700;font-family:'Baloo 2',sans-serif;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${user.displayName || user.email}</span>
+          <button onclick="doSignOut()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:0.75rem;font-family:'Nunito',sans-serif;">Sign Out</button>
+        </div>`;
+      loadTripsFromFirestore();
+      showToast('👋 Welcome back, ' + (user.displayName || 'Traveller') + '!', 'success');
+    } else {
+      navAuth.innerHTML = `
+        <button onclick="openLoginDrawer()" style="
+          background:linear-gradient(135deg,var(--gold),var(--saffron));
+          color:#fff;border:none;border-radius:10px;padding:8px 16px;
+          cursor:pointer;font-family:'Baloo 2',sans-serif;font-size:0.85rem;font-weight:700;
+          display:flex;align-items:center;gap:6px;transition:all 0.2s;
+          box-shadow:0 2px 10px rgba(240,165,0,0.3);
+        " onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">
+          👤 Sign In / Register
+        </button>`;
+    }
+  });
+
+  // ── SIGN IN ──
+  window.signInGoogle = async () => {
+    try {
+      document.getElementById('auth-error').textContent = '';
+      await signInWithPopup(auth, googleProvider);
+    } catch(e) {
+      document.getElementById('auth-error').textContent = '⚠️ ' + (e.message.includes('popup') ? 'Popup blocked. Please allow popups for this site.' : e.message);
+    }
+  };
+
+  window.signInFacebook = async () => {
+    try {
+      document.getElementById('auth-error').textContent = '';
+      await signInWithPopup(auth, fbProvider);
+    } catch(e) {
+      document.getElementById('auth-error').textContent = '⚠️ Facebook login: ' + e.message;
+    }
+  };
+
+  // Guest mode removed — site is open to all by default
+
+  window.doSignOut = async () => {
+    await signOut(auth);
+    currentUser = null;
+    showToast('👋 Signed out. See you soon!');
+  };
+
+  // ── FIRESTORE: Save Trip ──
+  window.saveTripToCloud = async (trip) => {
+    if (!currentUser) return;
+    try {
+      await setDoc(doc(db, 'users', currentUser.uid, 'trips', String(trip.id)), trip);
+      showToast('☁️ Trip saved to your account!', 'success');
+    } catch(e) { console.error('Save error:', e); }
+  };
+
+  window.deleteTripFromCloud = async (id) => {
+    if (!currentUser) return;
+    try { await deleteDoc(doc(db, 'users', currentUser.uid, 'trips', String(id))); } catch(e) {}
+  };
+
+  window.loadTripsFromFirestore = async () => {
+    if (!currentUser) return;
+    try {
+      const snap = await getDocs(collection(db, 'users', currentUser.uid, 'trips'));
+      trips = [];
+      snap.forEach(d => trips.push(d.data()));
+      trips.sort((a,b) => b.id - a.id);
+      localStorage.setItem('yatra_trips', JSON.stringify(trips));
+      renderTrips();
+    } catch(e) { console.error('Load error:', e); }
+  };
+</script>
+</head>
+<body>
+
+<!-- MAIN CONTENT (open to all, login optional via nav) -->
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-icon">🪔</span>
+    <div>
+      <div class="logo-text">Yatra</div>
+      <span class="logo-sub">Indian Travel Planner</span>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('planner')">🗺️ <span>Plan Trip</span></button>
+    <button class="nav-tab" onclick="showPage('itinerary')">📅 <span>Itinerary</span></button>
+    <button class="nav-tab" onclick="showPage('budget')">💰 <span>Budget</span></button>
+    <button class="nav-tab" onclick="showPage('checklist')">✅ <span>Checklist</span></button>
+    <button class="nav-tab" onclick="showPage('destinations')">🏔️ <span>Explore</span></button>
+    <button class="nav-tab" onclick="showPage('links')">🔗 <span>Search</span></button>
+  </div>
+  <!-- Auth area — shows Sign In button or user avatar -->
+  <div id="nav-auth-area" style="margin-left:8px;">
+    <button onclick="openLoginDrawer()" style="
+      background:linear-gradient(135deg,var(--gold),var(--saffron));
+      color:#fff;border:none;border-radius:10px;padding:8px 16px;
+      cursor:pointer;font-family:'Baloo 2',sans-serif;font-size:0.85rem;font-weight:700;
+      display:flex;align-items:center;gap:6px;
+      box-shadow:0 2px 10px rgba(240,165,0,0.3);white-space:nowrap;
+    ">👤 Sign In</button>
+  </div>
+</nav>
+
+<!-- ═══ LOGIN DRAWER (slides in from right, non-blocking) ═══ -->
+<div id="login-drawer-overlay" onclick="closeLoginDrawer()" style="
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:8000;backdrop-filter:blur(3px);transition:opacity 0.3s;
+"></div>
+
+<div id="login-drawer" style="
+  position:fixed;top:0;right:-420px;width:380px;max-width:95vw;height:100vh;
+  background:linear-gradient(160deg,#FFF8F0 0%,#FFFAF4 100%);
+  z-index:8001;box-shadow:-8px 0 40px rgba(0,0,0,0.2);
+  transition:right 0.35s cubic-bezier(0.4,0,0.2,1);
+  overflow-y:auto;padding:40px 32px;
+  border-left:3px solid var(--gold);
+">
+  <!-- Close button -->
+  <button onclick="closeLoginDrawer()" style="
+    position:absolute;top:16px;right:16px;background:none;border:none;
+    font-size:1.4rem;cursor:pointer;color:#aaa;line-height:1;
+  ">✕</button>
+
+  <!-- Header -->
+  <div style="text-align:center;margin-bottom:32px;">
+    <div style="font-size:2.5rem;margin-bottom:6px;">🪔</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--maroon);">Welcome to Yatra</div>
+    <p style="color:#888;font-size:0.88rem;margin-top:6px;line-height:1.5;">Sign in to save your trips, itineraries<br>and travel plans across devices</p>
+  </div>
+
+  <!-- Benefits -->
+  <div style="background:rgba(255,107,0,0.05);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:24px;">
+    <div style="font-family:'Baloo 2',sans-serif;font-size:0.82rem;font-weight:700;color:var(--maroon);margin-bottom:10px;">✨ When you sign in you can:</div>
+    <div style="font-size:0.82rem;line-height:2;color:var(--text);">
+      ☁️ Save trips to your account<br>
+      📋 View past itineraries anytime<br>
+      👤 Personal profile with photo<br>
+      🔗 Share trips with friends<br>
+      📱 Access from any device
+    </div>
+  </div>
+
+  <!-- Google -->
+  <button onclick="signInGoogle()" style="
+    width:100%;padding:14px;border-radius:12px;border:2px solid #E0E0E0;
+    background:#fff;cursor:pointer;font-size:0.95rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-bottom:12px;transition:all 0.2s;font-family:'Nunito',sans-serif;color:#333;
+  " onmouseover="this.style.borderColor='#4285F4';this.style.background='#F8F9FF'"
+     onmouseout="this.style.borderColor='#E0E0E0';this.style.background='#fff'">
+    <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 19.6-8 19.6-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.5 29.3 4 24 4c-7.7 0-14.4 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36 24 36c-5.2 0-9.5-2.9-11.3-7.1l-6.5 5C9.7 39.8 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.9 2.5-2.6 4.6-4.8 6l6.2 5.2C40.8 35.7 44 30.3 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+    Continue with Google
+  </button>
+
+  <!-- Facebook -->
+  <button onclick="signInFacebook()" style="
+    width:100%;padding:14px;border-radius:12px;border:2px solid #1877F2;
+    background:#1877F2;cursor:pointer;font-size:0.95rem;font-weight:700;color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin-bottom:20px;transition:all 0.2s;font-family:'Nunito',sans-serif;
+  " onmouseover="this.style.background='#166FE5'"
+     onmouseout="this.style.background='#1877F2'">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+    Continue with Facebook
+  </button>
+
+  <div id="auth-error" style="color:#e53935;font-size:0.82rem;text-align:center;min-height:18px;margin-bottom:8px;"></div>
+
+  <p style="font-size:0.72rem;color:#bbb;text-align:center;line-height:1.6;">
+    By signing in you agree to our terms.<br>Your data is private and never shared with third parties.
+  </p>
+
+  <!-- Skip -->
+  <div style="text-align:center;margin-top:20px;padding-top:20px;border-top:1px dashed var(--border);">
+    <button onclick="closeLoginDrawer()" style="
+      background:none;border:none;color:#aaa;cursor:pointer;
+      font-size:0.85rem;font-family:'Nunito',sans-serif;
+    ">Continue without signing in →</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Plan Your Perfect <span>Indian Journey</span> 🇮🇳</h1>
+  <p>AI-powered travel planning for every kind of explorer</p>
+  <div class="hero-badges">
+    <div class="badge">🌸 <span>Seasonal Picks</span></div>
+    <div class="badge women">👩 <span>Women Friendly</span></div>
+    <div class="badge single">🧳 <span>Solo Travel</span></div>
+    <div class="badge">👨‍👩‍👧 <span>Family Trips</span></div>
+    <div class="badge">🎒 <span>Budget to Luxury</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════ PAGE: PLAN TRIP ══════════════════════════════════ -->
+  <div class="page active" id="page-planner">
+    <div class="card" style="margin-bottom:24px;">
+      <div class="section-title">🌟 AI Trip Planner</div>
+      <p class="section-sub">Tell us about your dream trip and our AI will create a personalised itinerary</p>
+
+      <div class="form-row three">
+        <div class="form-group">
+          <label>📍 From (City)</label>
+          <input type="text" id="from-city" placeholder="e.g. Mumbai, Delhi" list="cities-list">
+        </div>
+        <div class="form-group">
+          <label>🏁 Destination</label>
+          <input type="text" id="to-city" placeholder="e.g. Rajasthan, Kerala" list="cities-list">
+        </div>
+        <div class="form-group">
+          <label>📅 Number of Days</label>
+          <input type="number" id="num-days" placeholder="e.g. 7" min="1" max="60">
+        </div>
+      </div>
+
+      <div class="form-row three">
+        <div class="form-group">
+          <label>🗓️ Travel Month</label>
+          <select id="travel-month">
+            <option value="">Select Month</option>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>💰 Budget Range</label>
+          <select id="budget-range">
+            <option value="">Select Budget</option>
+            <option value="budget">Budget (Under ₹5,000/day)</option>
+            <option value="moderate">Moderate (₹5,000–15,000/day)</option>
+            <option value="premium">Premium (₹15,000–40,000/day)</option>
+            <option value="luxury">Luxury (₹40,000+/day)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>🎂 Age Group</label>
+          <select id="age-group">
+            <option value="">Select Age Group</option>
+            <option value="child">Kids / Family (with children)</option>
+            <option value="young">Young Adults (18–30)</option>
+            <option value="adult">Adults (30–50)</option>
+            <option value="senior">Senior Citizens (50+)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>👥 Traveller Type</label>
+          <div class="toggle-group" id="traveller-type">
+            <button class="toggle-btn" onclick="toggleBtn(this,'traveller')">👤 Solo</button>
+            <button class="toggle-btn" onclick="toggleBtn(this,'traveller')">👫 Couple</button>
+            <button class="toggle-btn" onclick="toggleBtn(this,'traveller')">👨‍👩‍👧 Family</button>
+            <button class="toggle-btn" onclick="toggleBtn(this,'traveller')">🎊 Group of Friends</button>
+            <button class="toggle-btn single-flag" onclick="toggleBtn(this,'traveller')">🧳 Single Traveller</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>🌟 Special Flags</label>
+          <div class="toggle-group">
+            <button class="toggle-btn women-flag" id="women-flag" onclick="this.classList.toggle('active')">👩 Women-Friendly</button>
+            <button class="toggle-btn single-flag" id="senior-flag" onclick="this.classList.toggle('active')">👴 Senior Friendly</button>
+            <button class="toggle-btn" id="adventure-flag" onclick="this.classList.toggle('active')">🧗 Adventure</button>
+            <button class="toggle-btn" id="spiritual-flag" onclick="this.classList.toggle('active')">🙏 Spiritual</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label>💭 Interests & Special Requests (optional)</label>
+          <textarea id="interests" placeholder="e.g. I love street food, historical monuments, local markets. Prefer AC travel. Vegetarian. Have elderly parents. Want to avoid crowded places..."></textarea>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
+        <button class="btn" onclick="generateAIItinerary()">✨ Generate AI Itinerary</button>
+        <button class="btn teal" onclick="getSeasonalTip()">🌤️ Seasonal Advice</button>
+        <button class="btn gold" onclick="getWomenTip()">👩 Women's Safety Tips</button>
+      </div>
+
+      <div class="ai-box" id="ai-result">
+        <div class="ai-box-header"><span class="ai-sparkle">✨</span> AI Yatra Guide</div>
+        <div class="ai-loading" id="ai-loading">
+          <div class="dot-pulse"><span></span><span></span><span></span></div>
+          Crafting your personalised itinerary...
+        </div>
+        <div class="ai-content" id="ai-content"></div>
+      </div>
+    </div>
+
+    <!-- Saved Trips -->
+    <div class="section-title">📋 My Trips</div>
+    <p class="section-sub">Your saved trip plans</p>
+    <div class="trip-list" id="trip-list-container">
+      <p style="color:#aaa;font-size:0.9rem;">No trips saved yet. Generate an itinerary and save it!</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ PAGE: ITINERARY ══════════════════════════════════ -->
+  <div class="page" id="page-itinerary">
+    <div class="section-title">📅 Day-by-Day Itinerary</div>
+    <p class="section-sub">Build and manage your detailed trip schedule</p>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="form-row three">
+        <div class="form-group">
+          <label>Trip Name</label>
+          <input type="text" id="itin-name" placeholder="e.g. Rajasthan Heritage Tour">
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" id="itin-start">
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" id="itin-end">
+        </div>
+      </div>
+      <button class="btn sm" onclick="addDay()">➕ Add Day</button>
+    </div>
+
+    <div id="days-container"></div>
+  </div>
+
+  <!-- ══════════════════════════════════ PAGE: BUDGET ══════════════════════════════════ -->
+  <div class="page" id="page-budget">
+    <div class="section-title">💰 Budget Tracker</div>
+    <p class="section-sub">Track all your trip expenses in one place</p>
+
+    <div class="budget-summary">
+      <div class="budget-stat total"><div class="amount" id="total-budget-disp">₹0</div><div class="label">Total Budget</div></div>
+      <div class="budget-stat spent"><div class="amount" id="total-spent-disp">₹0</div><div class="label">Total Spent</div></div>
+      <div class="budget-stat remaining"><div class="amount" id="total-remaining-disp">₹0</div><div class="label">Remaining</div></div>
+    </div>
+    <div class="progress-bar-wrap" style="margin-bottom:20px;">
+      <div class="progress-bar" id="budget-progress" style="width:0%"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:700;margin-bottom:12px;">Set Total Budget</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Total Trip Budget (₹)</label>
+          <input type="number" id="total-budget-input" placeholder="e.g. 50000" oninput="updateBudgetDisplay()">
+        </div>
+        <div class="form-group">
+          <label>Trip Name</label>
+          <input type="text" id="budget-trip-name" placeholder="e.g. Goa Trip - March 2025">
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:700;margin-bottom:12px;">Add Expense</div>
+      <div class="form-row three">
+        <div class="form-group">
+          <label>Category</label>
+          <select id="exp-cat">
+            <option value="transport">🚆 Transport</option>
+            <option value="hotel">🏨 Hotel</option>
+            <option value="food">🍛 Food</option>
+            <option value="activity">🎡 Activities</option>
+            <option value="shopping">🛍️ Shopping</option>
+            <option value="other">📦 Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="exp-desc" placeholder="e.g. Train Mumbai to Jaipur">
+        </div>
+        <div class="form-group">
+          <label>Amount (₹)</label>
+          <input type="number" id="exp-amount" placeholder="e.g. 1200">
+        </div>
+      </div>
+      <button class="btn sm" onclick="addExpense()">➕ Add Expense</button>
+    </div>
+
+    <div class="card" id="expenses-list-card">
+      <div style="font-family:'Baloo 2',sans-serif;font-weight:700;margin-bottom:12px;">Expense Log</div>
+      <div id="expenses-list"><p style="color:#aaa;font-size:0.9rem;">No expenses added yet.</p></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ PAGE: CHECKLIST ══════════════════════════════════ -->
+  <div class="page" id="page-checklist">
+    <div class="section-title">✅ Packing Checklist</div>
+    <p class="section-sub">Never forget anything important on your trip</p>
+
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+      <span class="checklist-progress" id="checklist-progress-text">0 of 0 items packed</span>
+      <button class="btn sm teal" onclick="generateAIChecklist()">✨ AI Smart Checklist</button>
+      <button class="btn sm gold" onclick="resetChecklist()">🔄 Reset All</button>
+    </div>
+    <div class="progress-bar-wrap" style="margin-bottom:20px;">
+      <div class="progress-bar" id="checklist-progress-bar" style="width:0%"></div>
+    </div>
+
+    <div class="checklist-grid" id="checklist-container">
+      <!-- dynamically filled -->
+    </div>
+
+    <div class="ai-box" id="checklist-ai-box" style="margin-top:20px;">
+      <div class="ai-box-header"><span class="ai-sparkle">✨</span> AI Packing Suggestions</div>
+      <div class="ai-loading" id="checklist-ai-loading">
+        <div class="dot-pulse"><span></span><span></span><span></span></div>
+        Generating smart checklist...
+      </div>
+      <div class="ai-content" id="checklist-ai-content"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ PAGE: DESTINATIONS ══════════════════════════════════ -->
+  <div class="page" id="page-destinations">
+    <div class="section-title">🏔️ Explore India</div>
+    <p class="section-sub">Discover beautiful destinations across the country</p>
+
+    <div class="filter-bar">
+      <strong style="font-size:0.85rem;color:var(--maroon)">Filter:</strong>
+      <div class="filter-chip active" onclick="filterDest(this,'all')">🗺️ All</div>
+      <div class="filter-chip" onclick="filterDest(this,'women')">👩 Women Friendly</div>
+      <div class="filter-chip" onclick="filterDest(this,'single')">🧳 Solo Friendly</div>
+      <div class="filter-chip" onclick="filterDest(this,'summer')">☀️ Summer</div>
+      <div class="filter-chip" onclick="filterDest(this,'winter')">❄️ Winter</div>
+      <div class="filter-chip" onclick="filterDest(this,'monsoon')">🌧️ Monsoon</div>
+      <div class="filter-chip" onclick="filterDest(this,'spiritual')">🙏 Spiritual</div>
+      <div class="filter-chip" onclick="filterDest(this,'adventure')">🧗 Adventure</div>
+      <div class="filter-chip" onclick="filterDest(this,'beach')">🏖️ Beach</div>
+    </div>
+
+    <div class="dest-grid" id="dest-grid"></div>
+
+    <hr class="fancy">
+    <div class="section-title" style="margin-top:8px;">🌤️ Best Time to Travel</div>
+    <p class="section-sub">Seasonal travel recommendations for India</p>
+    <div class="season-tabs" id="season-tabs">
+      <div class="season-tab active" onclick="showSeason(this,'winter')">❄️ Oct–Feb (Winter)</div>
+      <div class="season-tab" onclick="showSeason(this,'summer')">☀️ Mar–Jun (Summer)</div>
+      <div class="season-tab" onclick="showSeason(this,'monsoon')">🌧️ Jul–Sep (Monsoon)</div>
+    </div>
+    <div id="season-content" class="card"></div>
+  </div>
+
+  <!-- ══════════════════════════════════ PAGE: SEARCH LINKS ══════════════════════════════════ -->
+  <div class="page" id="page-links">
+    <div class="section-title">🔗 Search & Book</div>
+    <p class="section-sub">Quick links to book hotels, flights, trains and more</p>
+
+    <div style="margin-bottom:28px;">
+      <h3 style="font-family:'Baloo 2',sans-serif;color:var(--maroon);margin-bottom:12px;">✈️ Flights</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://www.makemytrip.com/flights/" target="_blank">
+          <div class="link-icon" style="background:#FFF3E0;">✈️</div>
+          <div><h4>MakeMyTrip</h4><p>Popular for domestic flights & packages</p></div>
+        </a>
+        <a class="link-card" href="https://www.goibibo.com/flights/" target="_blank">
+          <div class="link-icon" style="background:#E8F5E9;">🛫</div>
+          <div><h4>Goibibo</h4><p>Good deals on flights across India</p></div>
+        </a>
+        <a class="link-card" href="https://www.easemytrip.com" target="_blank">
+          <div class="link-icon" style="background:#E3F2FD;">🌐</div>
+          <div><h4>EaseMyTrip</h4><p>Affordable flight bookings</p></div>
+        </a>
+        <a class="link-card" href="https://www.yatra.com" target="_blank">
+          <div class="link-icon" style="background:#FCE4EC;">🦅</div>
+          <div><h4>Yatra.com</h4><p>Flights, hotels and holiday packages</p></div>
+        </a>
+      </div>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <h3 style="font-family:'Baloo 2',sans-serif;color:var(--maroon);margin-bottom:12px;">🚆 Trains</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://www.irctc.co.in" target="_blank">
+          <div class="link-icon" style="background:#E8F5E9;">🚆</div>
+          <div><h4>IRCTC</h4><p>Official Indian Railways booking</p></div>
+        </a>
+        <a class="link-card" href="https://www.confirmtkt.com" target="_blank">
+          <div class="link-icon" style="background:#FFF8E1;">🎫</div>
+          <div><h4>ConfirmTkt</h4><p>Train availability & waitlist prediction</p></div>
+        </a>
+        <a class="link-card" href="https://www.railyatri.in" target="_blank">
+          <div class="link-icon" style="background:#F3E5F5;">🛤️</div>
+          <div><h4>RailYatri</h4><p>Live train tracking & food booking</p></div>
+        </a>
+      </div>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <h3 style="font-family:'Baloo 2',sans-serif;color:var(--maroon);margin-bottom:12px;">🏨 Hotels</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://www.oyo.com" target="_blank">
+          <div class="link-icon" style="background:#FCE4EC;">🏠</div>
+          <div><h4>OYO Rooms</h4><p>Budget to mid-range hotels across India</p></div>
+        </a>
+        <a class="link-card" href="https://www.booking.com" target="_blank">
+          <div class="link-icon" style="background:#E3F2FD;">🏨</div>
+          <div><h4>Booking.com</h4><p>Wide range of hotels & resorts</p></div>
+        </a>
+        <a class="link-card" href="https://www.treebo.com" target="_blank">
+          <div class="link-icon" style="background:#E8F5E9;">🌿</div>
+          <div><h4>Treebo Hotels</h4><p>Quality-assured budget hotels</p></div>
+        </a>
+        <a class="link-card" href="https://www.zostel.com" target="_blank">
+          <div class="link-icon" style="background:#FFF3E0;">🎒</div>
+          <div><h4>Zostel</h4><p>Hostels – great for solo & budget travel</p></div>
+        </a>
+      </div>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <h3 style="font-family:'Baloo 2',sans-serif;color:var(--maroon);margin-bottom:12px;">🚌 Buses & Cabs</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://www.redbus.in" target="_blank">
+          <div class="link-icon" style="background:#FCE4EC;">🚌</div>
+          <div><h4>RedBus</h4><p>Book buses across all Indian routes</p></div>
+        </a>
+        <a class="link-card" href="https://www.olacabs.com" target="_blank">
+          <div class="link-icon" style="background:#FFF8E1;">🚕</div>
+          <div><h4>Ola Cabs</h4><p>City cabs and intercity travel</p></div>
+        </a>
+        <a class="link-card" href="https://www.rapido.bike" target="_blank">
+          <div class="link-icon" style="background:#E8F5E9;">🏍️</div>
+          <div><h4>Rapido</h4><p>Bike taxis and autos</p></div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-family:'Baloo 2',sans-serif;color:var(--maroon);margin-bottom:12px;">🎡 Activities & Tours</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://www.thrillophilia.com" target="_blank">
+          <div class="link-icon" style="background:#E3F2FD;">🎡</div>
+          <div><h4>Thrillophilia</h4><p>Activities, tours and experiences</p></div>
+        </a>
+        <a class="link-card" href="https://www.viator.com" target="_blank">
+          <div class="link-icon" style="background:#FFF3E0;">🗺️</div>
+          <div><h4>Viator</h4><p>Tours and sightseeing experiences</p></div>
+        </a>
+        <a class="link-card" href="https://incredibleindia.gov.in" target="_blank">
+          <div class="link-icon" style="background:#E8F5E9;">🇮🇳</div>
+          <div><h4>Incredible India</h4><p>Official India tourism portal</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<datalist id="cities-list">
+  <option value="Mumbai"><option value="Delhi"><option value="Bengaluru"><option value="Chennai">
+  <option value="Kolkata"><option value="Hyderabad"><option value="Pune"><option value="Ahmedabad">
+  <option value="Jaipur"><option value="Goa"><option value="Kerala"><option value="Rajasthan">
+  <option value="Agra"><option value="Varanasi"><option value="Rishikesh"><option value="Shimla">
+  <option value="Manali"><option value="Darjeeling"><option value="Mysuru"><option value="Ooty">
+  <option value="Udaipur"><option value="Jodhpur"><option value="Jaisalmer"><option value="Amritsar">
+  <option value="Ladakh"><option value="Coorg"><option value="Andaman Islands"><option value="Munnar">
+</datalist>
+
+<script>
+// ── STATE ──
+let expenses = JSON.parse(localStorage.getItem('yatra_expenses')||'[]');
+let totalBudget = parseFloat(localStorage.getItem('yatra_budget')||'0');
+let checklistItems = JSON.parse(localStorage.getItem('yatra_checklist')||'null');
+let days = JSON.parse(localStorage.getItem('yatra_days')||'[]');
+let trips = JSON.parse(localStorage.getItem('yatra_trips')||'[]');
+let currentFilter = 'all';
+let currentSeason = 'winter';
+
+// ── NAVIGATION ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if(name==='budget') updateBudgetDisplay();
+  if(name==='checklist') renderChecklist();
+  if(name==='destinations') { renderDests(); renderSeason(); }
+  if(name==='itinerary') renderDays();
+  if(name==='planner') renderTrips();
+}
+
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast show '+type;
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ── TOGGLE BUTTONS ──
+function toggleBtn(btn, group) {
+  document.querySelectorAll(`#traveller-type .toggle-btn`).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── AI API CALL — reads key from config.js (portable, works on any platform) ──
+async function callAI(prompt, systemPrompt) {
+  const config = window.YATRA_CONFIG || {};
+  const apiKey = config.ANTHROPIC_API_KEY || "";
+
+  if (!apiKey || apiKey.trim() === "") {
+    throw new Error("NO_KEY");
+  }
+
+  const model     = config.AI_MODEL      || "claude-sonnet-4-20250514";
+  const maxTokens = config.AI_MAX_TOKENS || 1000;
+  const sysPrompt = systemPrompt || "You are Yatra Guide, a friendly and knowledgeable Indian travel expert. You give practical, culturally aware travel advice for Indian domestic travel. Be concise, warm and helpful. Use relevant emojis.";
+
+  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    },
+    body: JSON.stringify({
+      model,
+      max_tokens: maxTokens,
+      system: sysPrompt,
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({}));
+    throw new Error(err?.error?.message || "API error " + resp.status);
+  }
+
+  const data = await resp.json();
+  return data.content?.map(c => c.text || "").join("") || "Sorry, could not generate a response.";
+}
+
+// ── AI ITINERARY ──
+async function generateAIItinerary() {
+  const from = document.getElementById('from-city').value;
+  const to = document.getElementById('to-city').value;
+  const days = document.getElementById('num-days').value;
+  const month = document.getElementById('travel-month').value;
+  const budget = document.getElementById('budget-range').value;
+  const age = document.getElementById('age-group').value;
+  const interests = document.getElementById('interests').value;
+  const womenFriendly = document.getElementById('women-flag').classList.contains('active');
+  const spiritual = document.getElementById('spiritual-flag').classList.contains('active');
+  const adventure = document.getElementById('adventure-flag').classList.contains('active');
+  const senior = document.getElementById('senior-flag').classList.contains('active');
+  const traveller = document.querySelector('#traveller-type .toggle-btn.active')?.textContent?.trim()||'';
+
+  if(!to) { showToast('⚠️ Please enter a destination'); return; }
+
+  const box = document.getElementById('ai-result');
+  const loading = document.getElementById('ai-loading');
+  const content = document.getElementById('ai-content');
+  box.classList.add('show');
+  loading.style.display='flex';
+  content.textContent='';
+
+  const flags = [womenFriendly?'women-friendly':'', spiritual?'spiritual focus':'', adventure?'adventure activities':'', senior?'senior-citizen friendly':''].filter(Boolean).join(', ');
+
+  const prompt = `Create a detailed ${days||5}-day travel itinerary for ${traveller||'a traveller'} going from ${from||'India'} to ${to} in ${month||'the upcoming season'}.
+
+Budget: ${budget||'moderate'}
+Age Group: ${age||'adults'}
+Special Flags: ${flags||'none'}
+Interests: ${interests||'general sightseeing'}
+
+Please include:
+1. Day-by-day schedule with morning/afternoon/evening activities
+2. Must-visit places and hidden gems
+3. Local food recommendations
+4. Approximate daily budget breakdown in ₹
+5. Transport tips
+6. Best places to stay (category matching budget)
+7. Cultural tips and things to be mindful of
+${womenFriendly ? '8. Specific women safety tips and women-friendly accommodation/areas' : ''}
+${senior ? '8. Accessibility notes for senior citizens' : ''}`;
+
+  try {
+    const result = await callAI(prompt);
+    loading.style.display='none';
+    content.textContent = result;
+
+    // Save trip
+    const trip = { id: Date.now(), name: `${to} - ${days||5} Days`, destination: to, from, days, month, result, womenFriendly, flags };
+    trips.unshift(trip);
+    localStorage.setItem('yatra_trips', JSON.stringify(trips));
+    renderTrips();
+    if (typeof saveTripToCloud === 'function') saveTripToCloud(trip);
+    showToast('✅ Itinerary generated & saved!', 'success');
+  } catch(e) {
+    loading.style.display='none';
+    if (e.message === 'NO_KEY') {
+      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
+    } else {
+      content.textContent='⚠️ Error generating itinerary: ' + e.message + '. Please try again.';
+    }
+  }
+}
+
+async function getSeasonalTip() {
+  const to = document.getElementById('to-city').value || 'India';
+  const month = document.getElementById('travel-month').value || 'current season';
+  const box = document.getElementById('ai-result');
+  const loading = document.getElementById('ai-loading');
+  const content = document.getElementById('ai-content');
+  box.classList.add('show'); loading.style.display='flex'; content.textContent='';
+  try {
+    const r = await callAI(`Give detailed seasonal travel advice for visiting ${to} in ${month}. Include: weather conditions, what to pack, festivals happening, crowd levels, pros and cons of this time, and whether it's ideal to visit. Be practical and specific.`);
+    loading.style.display='none'; content.textContent=r;
+  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
+      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
+    } else {
+      content.textContent='⚠️ Error fetching seasonal advice. Please try again.';
+    } }
+}
+
+async function getWomenTip() {
+  const to = document.getElementById('to-city').value || 'India';
+  const box = document.getElementById('ai-result');
+  const loading = document.getElementById('ai-loading');
+  const content = document.getElementById('ai-content');
+  box.classList.add('show'); loading.style.display='flex'; content.textContent='';
+  try {
+    const r = await callAI(`Provide comprehensive women's travel safety guide for ${to}, India. Include: safe areas to stay, women-friendly hotels/guesthouses, safety tips, local customs to respect, how to get around safely, what to wear, emergency numbers, apps to download, and general confidence-building travel tips for women travellers.`);
+    loading.style.display='none'; content.textContent=r;
+  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
+      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
+    } else {
+      content.textContent='⚠️ Error fetching tips. Please try again.';
+    } }
+}
+
+// ── TRIPS LIST ──
+function renderTrips() {
+  const c = document.getElementById('trip-list-container');
+  if(!trips.length) { c.innerHTML='<p style="color:#aaa;font-size:0.9rem;">No trips saved yet. Generate an itinerary and save it!</p>'; return; }
+  c.innerHTML = trips.map(t=>`
+    <div class="trip-list-card" onclick="viewTrip(${t.id})">
+      <div>
+        <h4>🗺️ ${t.name}</h4>
+        <p>${t.from?t.from+' → ':''} ${t.destination} ${t.month?'| '+t.month:''}</p>
+        <div class="trip-flags">
+          ${t.womenFriendly?'<span class="trip-flag flag-women">👩 Women Friendly</span>':''}
+          ${t.flags?`<span class="trip-flag flag-single">${t.flags}</span>`:''}
+        </div>
+      </div>
+      <button class="btn danger sm" onclick="event.stopPropagation();deleteTrip(${t.id})">🗑️</button>
+    </div>`).join('');
+}
+
+function viewTrip(id) {
+  const t = trips.find(x=>x.id===id);
+  if(!t) return;
+  const box = document.getElementById('ai-result');
+  const content = document.getElementById('ai-content');
+  const loading = document.getElementById('ai-loading');
+  box.classList.add('show');
+  loading.style.display='none';
+  content.textContent = t.result;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function deleteTrip(id) {
+  trips = trips.filter(t=>t.id!==id);
+  localStorage.setItem('yatra_trips',JSON.stringify(trips));
+  renderTrips();
+  if (typeof deleteTripFromCloud === 'function') deleteTripFromCloud(id);
+  showToast('Trip deleted');
+}
+
+// ── ITINERARY ──
+function addDay() {
+  const name = document.getElementById('itin-name').value || 'My Trip';
+  const dayNum = days.length + 1;
+  days.push({ num:dayNum, title:`Day ${dayNum}`, activities:[{time:'Morning',desc:''},{time:'Afternoon',desc:''},{time:'Evening',desc:''}] });
+  localStorage.setItem('yatra_days', JSON.stringify(days));
+  renderDays();
+}
+
+function renderDays() {
+  const c = document.getElementById('days-container');
+  if(!days.length) { c.innerHTML='<p style="color:#aaa;padding:20px;">Click "+ Add Day" to start building your itinerary.</p>'; return; }
+  c.innerHTML = days.map((d,di)=>`
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-badge">Day ${d.num}</span>
+        <input value="${d.title}" onchange="days[${di}].title=this.value;saveDays()" style="flex:1;border:none;background:transparent;font-family:'Baloo 2',sans-serif;font-size:1rem;font-weight:700;color:var(--dark);outline:none;" placeholder="Day title e.g. Jaipur Palace Tour">
+        <button class="del-btn" onclick="deleteDay(${di})">🗑️</button>
+      </div>
+      ${d.activities.map((a,ai)=>`
+        <div class="activity-row">
+          <div class="activity-time">${a.time}</div>
+          <input class="activity-input" value="${a.desc}" placeholder="Add activity..." onchange="days[${di}].activities[${ai}].desc=this.value;saveDays()">
+          <button class="del-btn" onclick="deleteActivity(${di},${ai})">✕</button>
+        </div>`).join('')}
+      <button class="btn sm" style="margin-top:8px;" onclick="addActivity(${di})">➕ Activity</button>
+    </div>`).join('');
+}
+
+function saveDays() { localStorage.setItem('yatra_days',JSON.stringify(days)); }
+function deleteDay(i) { days.splice(i,1); days.forEach((d,j)=>d.num=j+1); saveDays(); renderDays(); }
+function addActivity(di) { days[di].activities.push({time:'',desc:''}); saveDays(); renderDays(); }
+function deleteActivity(di,ai) { days[di].activities.splice(ai,1); saveDays(); renderDays(); }
+
+// ── BUDGET ──
+function addExpense() {
+  const cat = document.getElementById('exp-cat').value;
+  const desc = document.getElementById('exp-desc').value;
+  const amount = parseFloat(document.getElementById('exp-amount').value);
+  if(!desc||!amount) { showToast('⚠️ Enter description and amount'); return; }
+  expenses.push({ id:Date.now(), cat, desc, amount });
+  localStorage.setItem('yatra_expenses',JSON.stringify(expenses));
+  document.getElementById('exp-desc').value='';
+  document.getElementById('exp-amount').value='';
+  updateBudgetDisplay();
+  showToast('Expense added!','success');
+}
+
+function updateBudgetDisplay() {
+  totalBudget = parseFloat(document.getElementById('total-budget-input').value)||0;
+  localStorage.setItem('yatra_budget',totalBudget);
+  const spent = expenses.reduce((s,e)=>s+e.amount,0);
+  const remaining = totalBudget - spent;
+  document.getElementById('total-budget-disp').textContent = '₹'+totalBudget.toLocaleString('en-IN');
+  document.getElementById('total-spent-disp').textContent = '₹'+spent.toLocaleString('en-IN');
+  document.getElementById('total-remaining-disp').textContent = '₹'+remaining.toLocaleString('en-IN');
+  document.getElementById('total-remaining-disp').style.color = remaining<0?'#e53935':'var(--teal)';
+  const pct = totalBudget ? Math.min(100,(spent/totalBudget)*100) : 0;
+  document.getElementById('budget-progress').style.width = pct+'%';
+  renderExpenses();
+}
+
+const catLabels = {transport:'🚆 Transport',hotel:'🏨 Hotel',food:'🍛 Food',activity:'🎡 Activities',shopping:'🛍️ Shopping',other:'📦 Other'};
+function renderExpenses() {
+  const list = document.getElementById('expenses-list');
+  if(!expenses.length) { list.innerHTML='<p style="color:#aaa;font-size:0.9rem;">No expenses added yet.</p>'; return; }
+  list.innerHTML = expenses.map(e=>`
+    <div class="expense-row">
+      <span class="category-badge cat-${e.cat}">${catLabels[e.cat]||e.cat}</span>
+      <span>${e.desc}</span>
+      <span style="font-weight:700;color:var(--saffron);">₹${e.amount.toLocaleString('en-IN')}</span>
+      <button class="del-btn" onclick="deleteExpense(${e.id})">🗑️</button>
+    </div>`).join('');
+}
+
+function deleteExpense(id) {
+  expenses = expenses.filter(e=>e.id!==id);
+  localStorage.setItem('yatra_expenses',JSON.stringify(expenses));
+  updateBudgetDisplay();
+}
+
+// ── CHECKLIST ──
+const defaultChecklist = {
+  '📄 Documents': ['Aadhar Card / PAN Card','Passport (if needed)','Train/Flight e-tickets','Hotel booking confirmation','Travel insurance','Emergency contacts list','Driving licence (if self-drive)'],
+  '👗 Clothing': ['T-shirts / Tops','Bottoms (pants/skirts)','Light jacket / Shawl','Comfortable walking shoes','Slippers / Sandals','Formal outfit (if needed)','Innerwear & socks (extra)','Rain jacket / Umbrella'],
+  '💊 Health & Safety': ['Prescription medicines','First-aid kit','Hand sanitiser','Face masks','Sunscreen SPF 50+','Insect repellent','ORS sachets','Motion sickness tablets','Pain killers','Thermometer'],
+  '🔌 Electronics': ['Phone charger','Power bank (10,000 mAh+)','Earphones / Headphones','Camera','Universal adapter','Laptop / Tablet','Memory cards','Selfie stick'],
+  '🧴 Toiletries': ['Toothbrush & toothpaste','Shampoo & conditioner','Body wash / Soap','Moisturiser','Deodorant','Hair brush / comb','Sanitary products'],
+  '🎒 Essentials': ['Backpack / Day bag','Water bottle (1L+)','Snacks for travel','Padlock for luggage','Earplugs','Eye mask','Travel pillow','Notebook & pen','Cash (₹ small denominations)','Downloaded offline maps']
+};
+
+function renderChecklist() {
+  if(!checklistItems) checklistItems = JSON.parse(JSON.stringify(defaultChecklist));
+  const c = document.getElementById('checklist-container');
+  let total=0, checked=0;
+  c.innerHTML = Object.entries(checklistItems).map(([section, items])=>`
+    <div class="checklist-section">
+      <h3>${section}</h3>
+      ${items.map((item,i)=>{
+        const key = section+'_'+i;
+        const isChecked = localStorage.getItem('check_'+btoa(encodeURIComponent(key)))==='1';
+        if(isChecked) checked++;
+        total++;
+        return `<div class="check-item ${isChecked?'checked':''}" onclick="toggleCheck(this,'${btoa(encodeURIComponent(key))}')">
+          <div class="check-box">${isChecked?'✓':''}</div>
+          <span>${item}</span>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+  document.getElementById('checklist-progress-text').textContent = `${checked} of ${total} items packed`;
+  document.getElementById('checklist-progress-bar').style.width = total?(checked/total*100)+'%':'0%';
+}
+
+function toggleCheck(el, key) {
+  el.classList.toggle('checked');
+  const isNowChecked = el.classList.contains('checked');
+  el.querySelector('.check-box').textContent = isNowChecked ? '✓' : '';
+  localStorage.setItem('check_'+key, isNowChecked?'1':'0');
+  renderChecklist();
+}
+
+function resetChecklist() {
+  Object.entries(checklistItems||{}).forEach(([s,items])=>items.forEach((_,i)=>{
+    localStorage.removeItem('check_'+btoa(encodeURIComponent(s+'_'+i)));
+  }));
+  renderChecklist();
+  showToast('Checklist reset!');
+}
+
+async function generateAIChecklist() {
+  const to = document.getElementById('to-city')?.value || '';
+  const month = document.getElementById('travel-month')?.value || '';
+  const age = document.getElementById('age-group')?.value || '';
+  const womenFriendly = document.getElementById('women-flag')?.classList.contains('active');
+  const box = document.getElementById('checklist-ai-box');
+  const loading = document.getElementById('checklist-ai-loading');
+  const content = document.getElementById('checklist-ai-content');
+  box.classList.add('show'); loading.style.display='flex'; content.textContent='';
+  try {
+    const r = await callAI(`Give a smart, context-specific packing list for travelling to ${to||'India'} in ${month||'upcoming trip'}. ${age?'Traveller age group: '+age+'.':''} ${womenFriendly?'Female traveller.':''} Include destination-specific items, weather-appropriate clothing, local tips. Format as clear sections.`);
+    loading.style.display='none'; content.textContent=r;
+  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
+      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
+    } else {
+      content.textContent='⚠️ Error generating checklist. Please try again.';
+    } }
+}
+
+// ── DESTINATIONS DATA ──
+const destinations = [
+  { name:'Rajasthan', state:'Rajasthan', emoji:'🏰', tags:['women','single','winter','cultural','heritage'], desc:'Palaces, forts, deserts & vibrant culture' },
+  { name:'Kerala', state:'Kerala', emoji:'🌴', tags:['women','single','monsoon','nature','beach'], desc:'Backwaters, beaches, ayurveda & spice gardens' },
+  { name:'Goa', state:'Goa', emoji:'🏖️', tags:['single','beach','winter','adventure'], desc:'Beaches, nightlife, Portuguese heritage & seafood' },
+  { name:'Shimla & Manali', state:'Himachal Pradesh', emoji:'🏔️', tags:['single','summer','adventure','nature'], desc:'Snow-capped mountains, adventure sports & pine forests' },
+  { name:'Varanasi', state:'Uttar Pradesh', emoji:'🪔', tags:['women','spiritual','winter','cultural'], desc:'Ghats, temples, Ganga Aarti & ancient culture' },
+  { name:'Rishikesh & Haridwar', state:'Uttarakhand', emoji:'🙏', tags:['women','single','spiritual','adventure','summer'], desc:'Yoga capital, rafting, temples & Ganga aarti' },
+  { name:'Agra', state:'Uttar Pradesh', emoji:'🕌', tags:['women','winter','cultural','heritage'], desc:'Taj Mahal, Agra Fort & Mughal architecture' },
+  { name:'Andaman Islands', state:'Andaman & Nicobar', emoji:'🐚', tags:['single','beach','winter','adventure'], desc:'Crystal waters, beaches, diving & island life' },
+  { name:'Munnar', state:'Kerala', emoji:'🍵', tags:['women','single','summer','nature'], desc:'Tea gardens, misty mountains & scenic drives' },
+  { name:'Darjeeling', state:'West Bengal', emoji:'🚂', tags:['women','single','summer','nature'], desc:'Toy train, tea gardens & Himalayan views' },
+  { name:'Ladakh', state:'J&K / Ladakh', emoji:'🏜️', tags:['single','summer','adventure','nature'], desc:'High altitude desert, monasteries & bike tours' },
+  { name:'Coorg', state:'Karnataka', emoji:'☕', tags:['women','single','monsoon','nature'], desc:'Coffee estates, waterfalls & lush greenery' },
+  { name:'Amritsar', state:'Punjab', emoji:'🕍', tags:['women','single','winter','spiritual'], desc:'Golden Temple, langar, Wagah border & street food' },
+  { name:'Udaipur', state:'Rajasthan', emoji:'🏯', tags:['women','single','winter','cultural','heritage'], desc:'City of Lakes, palaces & romantic landscapes' },
+  { name:'Mysuru', state:'Karnataka', emoji:'👑', tags:['women','winter','cultural','heritage'], desc:'Palaces, Dasara festival & silk sarees' },
+  { name:'Ooty', state:'Tamil Nadu', emoji:'🌺', tags:['women','single','summer','nature'], desc:'Nilgiri hills, botanical gardens & tea estates' },
+];
+
+function filterDest(chip, tag) {
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  currentFilter = tag;
+  renderDests();
+}
+
+function renderDests() {
+  const grid = document.getElementById('dest-grid');
+  const filtered = currentFilter==='all' ? destinations : destinations.filter(d=>d.tags.includes(currentFilter));
+  grid.innerHTML = filtered.map(d=>`
+    <div class="dest-card" onclick="planFromDest('${d.name}')">
+      <div class="dest-img">${d.emoji}</div>
+      <div class="dest-info">
+        <div class="dest-name">${d.name}</div>
+        <div class="dest-state">📍 ${d.state}</div>
+        <p style="font-size:0.78rem;color:#666;margin:4px 0;">${d.desc}</p>
+        <div class="dest-tags">
+          ${d.tags.includes('women')?'<span class="dest-tag tag-women">👩 Women Safe</span>':''}
+          ${d.tags.includes('single')?'<span class="dest-tag tag-single">🧳 Solo</span>':''}
+          ${d.tags.includes('winter')?'<span class="dest-tag tag-season">❄️ Oct–Feb</span>':''}
+          ${d.tags.includes('summer')?'<span class="dest-tag tag-season">☀️ Mar–Jun</span>':''}
+          ${d.tags.includes('monsoon')?'<span class="dest-tag tag-season">🌧️ Jul–Sep</span>':''}
+          ${d.tags.includes('spiritual')?'<span class="dest-tag">🙏 Spiritual</span>':''}
+          ${d.tags.includes('adventure')?'<span class="dest-tag">🧗 Adventure</span>':''}
+          ${d.tags.includes('beach')?'<span class="dest-tag">🏖️ Beach</span>':''}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function planFromDest(name) {
+  document.getElementById('to-city').value = name;
+  showPage('planner');
+  document.querySelectorAll('.nav-tab').forEach((t,i)=>{ if(i===0) t.classList.add('active'); else t.classList.remove('active'); });
+  showToast(`📍 ${name} selected! Fill in details and generate itinerary.`, 'success');
+}
+
+// ── SEASONS ──
+const seasonData = {
+  winter: {
+    title:'❄️ October – February (Winter / Peak Season)',
+    content:`This is the best time to visit most of India. Weather is pleasant and cool across the country.
+
+🏆 Best Destinations:
+• Rajasthan (Jaipur, Udaipur, Jaisalmer) – Perfect weather for sightseeing
+• Goa – Prime beach season, festivals, lively atmosphere
+• Kerala Backwaters – Comfortable and beautiful
+• Varanasi & Agra – Ideal conditions
+• Andaman Islands – Best sea visibility for diving
+• Tamil Nadu & South India – Cool and manageable
+
+🎉 Festivals: Diwali, Dussehra, Pushkar Camel Fair, Goa Carnival (Feb), Pongal
+
+💡 Tips: Book 2–3 months in advance; prices are high during this peak season. Carry light woolens for North India evenings.`
+  },
+  summer: {
+    title:'☀️ March – June (Summer)',
+    content:`Hot across plains of India. Best time for hill stations and North-East.
+
+🏔️ Best Destinations:
+• Himachal Pradesh – Shimla, Manali, Spiti Valley open up
+• Uttarakhand – Rishikesh, Mussoorie, Valley of Flowers
+• Ladakh – Opens from May; best for adventure
+• Darjeeling & Sikkim – Ideal weather
+• Munnar & Ooty – Cool escape from South India heat
+• Kashmir – One of its most beautiful seasons (Apr–Jun)
+
+⚠️ Avoid: Plains of Rajasthan, Delhi, UP (40–48°C!), Goa (off-season)
+
+💡 Tips: Book hill stations 4–6 months ahead. Carry sunscreen, lots of water. Avoid travel during May–June school rush if possible.`
+  },
+  monsoon: {
+    title:'🌧️ July – September (Monsoon)',
+    content:`India comes alive with green landscapes. Discounts available everywhere!
+
+🌿 Best Destinations:
+• Kerala – Monsoon ayurveda packages, lush backwaters
+• Coorg & Wayanad – Coffee estates in full bloom
+• Meghalaya – The wettest place on Earth, breathtaking waterfalls
+• Goa – Off-season but scenic; great deals
+• Lonavala & Mahabaleshwar – Day trips from Mumbai/Pune
+• Rishikesh – Rafting season peaks (Jul–Sep)
+
+⚠️ Avoid: Rajasthan (very hot + flash floods), Ladakh (landslides), East Coast (cyclone risk)
+
+💡 Tips: Always check weather forecasts. Carry waterproof bags, ponchos. Road travel can be unpredictable. Book refundable tickets. Great for budget travellers — 30–50% off on hotels!`
+  }
+};
+
+function showSeason(tab, season) {
+  document.querySelectorAll('.season-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  currentSeason = season;
+  renderSeason();
+}
+
+function renderSeason() {
+  const d = seasonData[currentSeason];
+  document.getElementById('season-content').innerHTML = `
+    <div style="font-family:'Baloo 2',sans-serif;font-size:1.05rem;font-weight:700;color:var(--maroon);margin-bottom:12px;">${d.title}</div>
+    <div style="white-space:pre-wrap;line-height:1.8;font-size:0.93rem;">${d.content}</div>`;
+}
+
+// ── INIT ──
+renderChecklist();
+renderDests();
+renderSeason();
+renderTrips();
+renderExpenses();
+if(totalBudget) document.getElementById('total-budget-input').value = totalBudget;
+</script>
+
+<!-- ═══ SEO FOOTER ═══ -->
+<footer style="
+  background:linear-gradient(135deg,#2D0A00,#5C1010);
+  color:rgba(255,255,255,0.7);padding:40px 2rem 20px;margin-top:60px;
+  font-family:'Nunito',sans-serif;font-size:0.85rem;
+">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#FFD700;margin-bottom:8px;">🪔 Yatra</div>
+        <p style="line-height:1.7;color:rgba(255,255,255,0.6);">
+          India's AI-powered domestic travel planner. Plan trips, track budgets, get personalised itineraries and explore the best of Incredible India — from the Himalayas to the backwaters.
+        </p>
+        <div style="margin-top:12px;color:rgba(255,255,255,0.4);font-size:0.78rem;">
+          🇮🇳 Made with ❤️ for Indian Travellers
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#FFD700;margin-bottom:12px;font-family:'Baloo 2',sans-serif;">Popular Destinations</div>
+        <div style="line-height:2;color:rgba(255,255,255,0.6);">
+          Rajasthan • Kerala<br>Goa • Himachal Pradesh<br>Ladakh • Varanasi<br>Andaman • Coorg<br>Rishikesh • Mysuru
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#FFD700;margin-bottom:12px;font-family:'Baloo 2',sans-serif;">Travel Categories</div>
+        <div style="line-height:2;color:rgba(255,255,255,0.6);">
+          👩 Women Solo Travel<br>🧳 Single Travel<br>👨‍👩‍👧 Family Trips<br>👴 Senior Travel<br>🎒 Budget Travel<br>🧗 Adventure Travel<br>🙏 Spiritual Tours
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <span>© 2025 Yatra – Indian Travel Planner. Free to use. | AI-powered itineraries for every Indian traveller.</span>
+      <span style="color:rgba(255,255,255,0.4);">AI-powered itineraries • Budget tracker • Packing checklist • Seasonal guides</span>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

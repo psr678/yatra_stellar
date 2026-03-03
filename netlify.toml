@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════
+#  Yatra – Netlify Configuration  (netlify.toml)
+#  Place this file in the ROOT of your project folder
+# ═══════════════════════════════════════════════════════════════
+
+[build]
+  publish   = "."                  # HTML files live in root
+  functions = "netlify/functions"  # Serverless functions folder
+
+[functions]
+  node_bundler = "esbuild"         # Fast modern bundler
+
+# ── Route /api/ai → our secure serverless function ─────────────
+[[redirects]]
+  from   = "/api/ai"
+  to     = "/.netlify/functions/ai"
+  status = 200
+
+# ── Block direct access to config.js (extra safety layer) ──────
+[[redirects]]
+  from   = "/config.js"
+  to     = "/404.html"
+  status = 404
+  force  = true
+
+# ── Security Headers ────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options            = "SAMEORIGIN"
+    X-XSS-Protection           = "1; mode=block"
+    X-Content-Type-Options     = "nosniff"
+    Referrer-Policy            = "strict-origin-when-cross-origin"
+    Permissions-Policy         = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security  = "max-age=31536000; includeSubDomains"
+
+# ── Cache static assets ─────────────────────────────────────────
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
