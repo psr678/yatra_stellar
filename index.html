@@ -63,8 +63,8 @@
   }
 }
 </script>
-<!-- ✅ Config file — paste your API key in config.js -->
-<script src="config.js"></script>
+<!-- 🔒 API key is stored securely in Netlify Environment Variables -->
+<!-- No config file needed — key never touches the browser -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Baloo+2:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -1018,42 +1018,36 @@ function toggleBtn(btn, group) {
   btn.classList.add('active');
 }
 
-// ── AI API CALL — reads key from config.js (portable, works on any platform) ──
+// ── AI API CALL ──────────────────────────────────────────────────
+// 🔒 Calls /api/ai — a Netlify serverless function on the server
+// 🔒 The Anthropic API key lives ONLY in Netlify Environment Variables
+// 🔒 Key is never in this file, never in the browser, never visible
+// ─────────────────────────────────────────────────────────────────
 async function callAI(prompt, systemPrompt) {
-  const config = window.YATRA_CONFIG || {};
-  const apiKey = config.ANTHROPIC_API_KEY || "";
+  const sysPrompt = systemPrompt ||
+    "You are Yatra Guide, a friendly and knowledgeable Indian travel expert. " +
+    "You give practical, culturally aware travel advice for Indian domestic travel. " +
+    "Be concise, warm and helpful. Use relevant emojis.";
 
-  if (!apiKey || apiKey.trim() === "") {
-    throw new Error("NO_KEY");
-  }
-
-  const model     = config.AI_MODEL      || "claude-sonnet-4-20250514";
-  const maxTokens = config.AI_MAX_TOKENS || 1000;
-  const sysPrompt = systemPrompt || "You are Yatra Guide, a friendly and knowledgeable Indian travel expert. You give practical, culturally aware travel advice for Indian domestic travel. Be concise, warm and helpful. Use relevant emojis.";
-
-  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+  const resp = await fetch("/api/ai", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": apiKey,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model,
-      max_tokens: maxTokens,
-      system: sysPrompt,
-      messages: [{ role: "user", content: prompt }]
+      model:      "claude-sonnet-4-20250514",
+      max_tokens: 1000,
+      system:     sysPrompt,
+      messages:   [{ role: "user", content: prompt }]
     })
   });
 
   if (!resp.ok) {
     const err = await resp.json().catch(() => ({}));
-    throw new Error(err?.error?.message || "API error " + resp.status);
+    throw new Error(err.error || "Server error " + resp.status);
   }
 
   const data = await resp.json();
-  return data.content?.map(c => c.text || "").join("") || "Sorry, could not generate a response.";
+  return data.content?.map(c => c.text || "").join("") ||
+    "Sorry, could not generate a response.";
 }
 
 // ── AI ITINERARY ──
@@ -1114,9 +1108,7 @@ ${senior ? '8. Accessibility notes for senior citizens' : ''}`;
     showToast('✅ Itinerary generated & saved!', 'success');
   } catch(e) {
     loading.style.display='none';
-    if (e.message === 'NO_KEY') {
-      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
-    } else {
+    
       content.textContent='⚠️ Error generating itinerary: ' + e.message + '. Please try again.';
     }
   }
@@ -1132,11 +1124,8 @@ async function getSeasonalTip() {
   try {
     const r = await callAI(`Give detailed seasonal travel advice for visiting ${to} in ${month}. Include: weather conditions, what to pack, festivals happening, crowd levels, pros and cons of this time, and whether it's ideal to visit. Be practical and specific.`);
     loading.style.display='none'; content.textContent=r;
-  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
-      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
-    } else {
-      content.textContent='⚠️ Error fetching seasonal advice. Please try again.';
-    } }
+  } catch(e) { loading.style.display='none'; 
+      content.textContent='⚠️ Error fetching seasonal advice. Please try again.'; }
 }
 
 async function getWomenTip() {
@@ -1148,11 +1137,8 @@ async function getWomenTip() {
   try {
     const r = await callAI(`Provide comprehensive women's travel safety guide for ${to}, India. Include: safe areas to stay, women-friendly hotels/guesthouses, safety tips, local customs to respect, how to get around safely, what to wear, emergency numbers, apps to download, and general confidence-building travel tips for women travellers.`);
     loading.style.display='none'; content.textContent=r;
-  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
-      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
-    } else {
-      content.textContent='⚠️ Error fetching tips. Please try again.';
-    } }
+  } catch(e) { loading.style.display='none'; 
+      content.textContent='⚠️ Error fetching tips. Please try again.'; }
 }
 
 // ── TRIPS LIST ──
@@ -1334,11 +1320,8 @@ async function generateAIChecklist() {
   try {
     const r = await callAI(`Give a smart, context-specific packing list for travelling to ${to||'India'} in ${month||'upcoming trip'}. ${age?'Traveller age group: '+age+'.':''} ${womenFriendly?'Female traveller.':''} Include destination-specific items, weather-appropriate clothing, local tips. Format as clear sections.`);
     loading.style.display='none'; content.textContent=r;
-  } catch(e) { loading.style.display='none'; if (e.message === 'NO_KEY') {
-      content.textContent='⚙️ API key not configured. Please open config.js and paste your Anthropic API key, then re-upload both files.';
-    } else {
-      content.textContent='⚠️ Error generating checklist. Please try again.';
-    } }
+  } catch(e) { loading.style.display='none'; 
+      content.textContent='⚠️ Error generating checklist. Please try again.'; }
 }
 
 // ── DESTINATIONS DATA ──
